@@ -1,12 +1,20 @@
 /* =========================================================
-   노현태 포트폴리오 — PC 스크립트 (Vanilla JS, 의존성 없음)
-   모바일 버전과 같은 동작을 공유하되, 드로어 대신 가로 내비게이션을
-   쓰고 현재 섹션을 표시하는 스크롤스파이를 추가한다.
+   노현태 포트폴리오 — 공용 스크립트 (Vanilla JS, 의존성 없음)
 
-   기존 jQuery / jQuery UI / easing / mousewheel / prefixfree /
-   bxSlider 스택은 제거했다. 휠 이벤트를 가로채 섹션 단위로 강제
-   이동시키던 동작도 함께 없앴다 — 관성 스크롤을 막고 스크롤바
-   위치를 사용자가 예측할 수 없게 만들기 때문이다.
+   PC 버전(/index.html)과 모바일 버전(/new_portfolio/index.html)이
+   **이 파일 하나를 함께 사용**한다. 각 기능은 필요한 DOM이 없으면
+   조용히 빠져나가므로, 한 파일로 두 페이지를 모두 다룰 수 있다.
+
+     - 타이핑        : 두 버전 공통
+     - 드로어 메뉴    : 모바일에만 존재 (#drawer 없으면 skip)
+     - 스크롤스파이   : PC에만 존재     (.nav 없으면 skip)
+     - 상단바/맨 위로 : 두 버전 공통
+     - 등장 효과      : 두 버전 공통
+     - 슬라이더       : 두 버전 공통 (CSS scroll-snap + 도트/화살표/자동재생)
+
+   기존 jQuery / jQuery UI / easing / mousewheel / prefixfree / bxSlider
+   스택은 제거했다. 휠 이벤트를 가로채 섹션 단위로 강제 이동시키던 동작도
+   함께 없앴다 — 관성 스크롤을 막고 스크롤 위치를 예측할 수 없게 만들기 때문.
    ========================================================= */
 (function () {
   'use strict';
@@ -33,7 +41,45 @@
   })();
 
   /* ---------------------------------------------------------
-     2. 스크롤스파이 — 현재 보고 있는 섹션을 내비게이션에 표시
+     2. 드로어 메뉴 — 모바일 전용 (#drawer 없으면 skip)
+     --------------------------------------------------------- */
+  (function drawer() {
+    var toggle = document.getElementById('navToggle');
+    var panel  = document.getElementById('drawer');
+    var scrim  = document.getElementById('scrim');
+    if (!toggle || !panel || !scrim) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+      panel.classList.toggle('is-open', open);
+      document.body.classList.toggle('is-locked', open);
+
+      if (open) {
+        panel.removeAttribute('inert');
+        scrim.hidden = false;
+        requestAnimationFrame(function () { scrim.classList.add('is-open'); });
+      } else {
+        panel.setAttribute('inert', '');
+        scrim.classList.remove('is-open');
+        setTimeout(function () { if (!panel.classList.contains('is-open')) scrim.hidden = true; }, 300);
+      }
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    scrim.addEventListener('click', function () { setOpen(false); });
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);   // 메뉴 이동 시 자동 닫기
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('is-open')) { setOpen(false); toggle.focus(); }
+    });
+  })();
+
+  /* ---------------------------------------------------------
+     3. 스크롤스파이 — PC 전용 (.nav 없으면 skip) — 현재 보고 있는 섹션을 내비게이션에 표시
      --------------------------------------------------------- */
   (function spy() {
     var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
@@ -60,7 +106,7 @@
   })();
 
   /* ---------------------------------------------------------
-     3. 스크롤 상태 — 상단바 배경 / 맨 위로 버튼
+     4. 스크롤 상태 — 상단바 배경 / 맨 위로 버튼
      --------------------------------------------------------- */
   (function scrollState() {
     var bar   = document.getElementById('appbar');
@@ -94,7 +140,7 @@
   })();
 
   /* ---------------------------------------------------------
-     4. 스크롤 등장 효과
+     5. 스크롤 등장 효과
      --------------------------------------------------------- */
   (function reveal() {
     var items = document.querySelectorAll('[data-reveal]');
@@ -119,7 +165,7 @@
   })();
 
   /* ---------------------------------------------------------
-     5. 포트폴리오 슬라이더
+     6. 포트폴리오 슬라이더
         스와이프는 CSS scroll-snap(네이티브)이 담당하고,
         JS는 도트/화살표/자동재생만 얹는다.
      --------------------------------------------------------- */
