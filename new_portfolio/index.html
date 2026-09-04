@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="웹 퍼블리셔 노현태의 모바일 포트폴리오">
+    <meta name="keywords" content="자기소개, 포트폴리오, 웹퍼블리셔, 모바일 포트폴리오">
+    <meta name="author" content="No hyeon tae">
+    <meta name="theme-color" content="#1e2022">
+    <meta name="format-detection" content="telephone=no">
+    <title>노현태 │ 웹 퍼블리셔 포트폴리오 (Mobile)</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a class="skip" href="#about">본문 바로가기</a>
+
+    <!-- ===== 상단 바 ===== -->
+    <header class="appbar" id="appbar">
+        <a class="appbar__brand" href="#home">NHT<span>.</span></a>
+        <button class="appbar__toggle" id="navToggle" type="button"
+                aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </header>
+
+    <!-- ===== 드로어 메뉴 ===== -->
+    <nav class="drawer" id="drawer" aria-label="주요 메뉴" inert>
+        <ul class="drawer__list">
+            <li><a href="#home"><em>01</em>Home</a></li>
+            <li><a href="#about"><em>02</em>About</a></li>
+            <li><a href="#skill"><em>03</em>Skills</a></li>
+            <li><a href="#work"><em>04</em>Portfolio</a></li>
+        </ul>
+        <p class="drawer__mail"><a href="mailto:note1234@gmail.com">note1234@gmail.com</a></p>
+    </nav>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <main>
+        <!-- ===== HOME ===== -->
+        <section id="home" class="home">
+            <div class="home__inner">
+                <p class="home__label">PORTFOLIO</p>
+                <h1 class="home__type">
+                    <span id="typeTarget" class="type"></span><span class="caret" aria-hidden="true"></span>
+                </h1>
+                <p class="sr-only" id="typeSource">WELCOME TO MY PORTFOLIO</p>
+                <p class="home__kao" aria-hidden="true">(˵⚈ε⚈˵)</p>
+                <span class="home__rule"></span>
+                <p class="home__intro">웹 퍼블리셔<br><b>노현태</b>입니다.</p>
+
+                <ul class="home__nav">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skill">Skills</a></li>
+                    <li><a href="#work">Portfolio</a></li>
+                    <li><a href="mailto:note1234@gmail.com">Contact</a></li>
+                </ul>
+            </div>
+            <a class="home__down" href="#about" aria-label="아래로 이동">
+                <span class="mouse"><i></i></span>
+                <em>SCROLL</em>
+            </a>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="sec sec--light">
+            <div class="wrap">
+                <h2 class="sec__title" data-reveal>About<span>.</span></h2>
+
+                <ul class="cards">
+                    <li class="card" data-reveal>
+                        <div class="card__ico"><img src="../img/one.png" alt="" loading="lazy" decoding="async"></div>
+                        <h3>정보를 찾아다니는 웹 퍼블리셔</h3>
+                        <p>좋아하는 일에 주저함은 필요치 않으며<br>
+                           지금보다 발전하기 위해 항상 노력하고자 합니다.<br>
+                           웹표준 및 웹접근성을 추구하는 퍼블리셔입니다.<br>
+                           최신 기술을 배움으로서 끊임없는 열공중입니다.</p>
+                    </li>
+                    <li class="card" data-reveal>
+                        <div class="card__ico"><img src="../img/two.png" alt="" loading="lazy" decoding="async"></div>
+                        <h3>노 현태 <small>(male)</small></h3>
+                        <ul class="chips">
+                            <li>정보처리 산업기사</li>
+                            <li>네트워크 관리사 2급</li>
+                            <li>2종 보통 운전면허증</li>
+                            <li>파워포인트 1급</li>
+                            <li>액셀 1급</li>
+                        </ul>
+                    </li>
+                    <li class="card" data-reveal>
+                        <div class="card__ico"><img src="../img/three.png" alt="" loading="lazy" decoding="async"></div>
+                        <h3>Contact</h3>
+                        <a class="mail" href="mailto:note1234@gmail.com">
+                            <img src="../img/three-one.png" alt="" loading="lazy" decoding="async">
+                            <span>note1234@gmail.com</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section id="skill" class="sec sec--dark">
+            <div class="wrap">
+                <h2 class="sec__title" data-reveal>Skills<span>.</span></h2>
+
+                <ul class="skills">
+                    <li data-reveal>
+                        <div class="skills__ico"><img src="../img/html-img.png" alt="" loading="lazy" decoding="async"></div>
+                        <span>HTML</span>
+                    </li>
+                    <li data-reveal>
+                        <div class="skills__ico"><img src="../img/css_img.png" alt="" loading="lazy" decoding="async"></div>
+                        <span>CSS</span>
+                    </li>
+                    <li data-reveal>
+                        <div class="skills__ico"><img src="../img/js-img.png" alt="" loading="lazy" decoding="async"></div>
+                        <span>Javascript<br>&amp; jQuery</span>
+                    </li>
+                    <li data-reveal>
+                        <div class="skills__ico"><img src="../img/psd-img.png" alt="" loading="lazy" decoding="async"></div>
+                        <span>PHOTOSHOP</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== PORTFOLIO ===== -->
+        <section id="work" class="sec sec--light">
+            <div class="wrap">
+                <h2 class="sec__title" data-reveal>Made in UI·UX<span>.</span></h2>
+                <p class="sec__desc" data-reveal>좌우로 밀어서 작업물을 확인하세요.</p>
+
+                <div class="slider" id="slider">
+                    <ul class="slider__track" id="track">
+                        <li class="slide">
+                            <div class="slide__thumb">
+                                <img src="../img/animation_img.png" alt="KeyFrame Animation 작업물" loading="lazy" decoding="async">
+                            </div>
+                            <div class="slide__body">
+                                <h3>KeyFrame Animation</h3>
+                                <em>키프레임을 활용한 애니메이션 디자인</em>
+                                <a class="btn" href="http://nht1763.com/goodfoodtruck/" target="_blank" rel="noopener">
+                                    Concept View
+                                    <img src="../img/forward.png" alt="" aria-hidden="true">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div class="slide__thumb">
+                                <img src="../img/port_img.png" alt="Personal Logo 작업물" loading="lazy" decoding="async">
+                            </div>
+                            <div class="slide__body">
+                                <h3>Personal Logo</h3>
+                                <em>셀프 제작 웹 디자인</em>
+                                <a class="btn" href="http://nht1763.com/byeokje/" target="_blank" rel="noopener">
+                                    Concept View
+                                    <img src="../img/forward.png" alt="" aria-hidden="true">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div class="slide__thumb">
+                                <img src="../img/photoshop_img.png" alt="Graphic Design 작업물" loading="lazy" decoding="async">
+                            </div>
+                            <div class="slide__body">
+                                <h3>Graphic Design</h3>
+                                <em>포토샵을 활용한 그래픽 디자인</em>
+                                <a class="btn" href="http://nht1763.com/godiva/" target="_blank" rel="noopener">
+                                    Concept View
+                                    <img src="../img/forward.png" alt="" aria-hidden="true">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div class="slide__thumb">
+                                <img src="../img/illustor_img.png" alt="일러스트레이터 디자인 작업물" loading="lazy" decoding="async">
+                            </div>
+                            <div class="slide__body">
+                                <h3>Graphic Design</h3>
+                                <em>일러스트레이터를 활용한 디자인</em>
+                                <a class="btn" href="http://nht1763.com/gangdong/" target="_blank" rel="noopener">
+                                    Concept View
+                                    <img src="../img/forward.png" alt="" aria-hidden="true">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div class="slide__thumb">
+                                <img src="../img/renewal_design.png" alt="웹 사이트 리뉴얼 디자인 작업물" loading="lazy" decoding="async">
+                            </div>
+                            <div class="slide__body">
+                                <h3>UI/UX Design</h3>
+                                <em>웹 사이트 리뉴얼 디자인</em>
+                                <a class="btn" href="http://nht1763.com/lookin/" target="_blank" rel="noopener">
+                                    Concept View
+                                    <img src="../img/forward.png" alt="" aria-hidden="true">
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="slider__ctrl">
+                        <button type="button" id="prev" aria-label="이전 작업물">‹</button>
+                        <div class="dots" id="dots" role="tablist" aria-label="작업물 선택"></div>
+                        <button type="button" id="next" aria-label="다음 작업물">›</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <p class="foot__name">노현태 <span>Web Publisher</span></p>
+        <a class="foot__mail" href="mailto:note1234@gmail.com">note1234@gmail.com</a>
+        <p class="foot__copy">&copy; 2026 No hyeon tae. All rights reserved.</p>
+    </footer>
+
+    <button class="totop" id="toTop" type="button" aria-label="맨 위로 이동" hidden>↑</button>
+
+    <script src="js/app.js" defer></script>
+</body>
+</html>
