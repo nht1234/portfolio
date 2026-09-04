@@ -1,0 +1,144 @@
+@charset "utf-8";
+/* =========================================================
+   PC 전용 레이어
+   공용 디자인 시스템(base.css) 위에 얹는다.
+
+   여기에는 데스크톱에만 필요한 것만 둔다.
+     - 가로 내비게이션 + 스크롤스파이
+     - 넓은 화면 레이아웃 (>=1024px, >=1440px)
+     - 마우스 입력용 hover 피드백
+   ========================================================= */
+
+/* =========================================================
+   12. 데스크톱 레이어
+   모바일 버전과 같은 컴포넌트를 쓰되, 넓은 화면과 마우스 입력에 맞춘다.
+   - 햄버거 드로어 → 가로 내비게이션
+   - :active(터치 피드백) → :hover(마우스 피드백)
+   ========================================================= */
+
+/* ---- 가로 내비게이션 ---- */
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav a {
+    position: relative;
+    display: block;
+    padding: 10px 14px;
+    color: var(--line);
+    font-size: 14px; letter-spacing: .03em;
+    transition: color .25s var(--ease);
+}
+.nav a::after {
+    content: ""; position: absolute;
+    left: 14px; right: 14px; bottom: 4px;
+    height: 1px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .28s var(--ease);
+}
+.nav a:hover { color: var(--paper); }
+.nav a:hover::after { transform: scaleX(1); }
+.nav a.is-active { color: var(--paper); }
+.nav a.is-active::after { transform: scaleX(1); }
+
+.nav__mail {
+    margin-left: 10px; padding: 9px 18px;
+    border: 1px solid rgba(240, 245, 249, .35); border-radius: 999px;
+    color: var(--paper); font-size: 13px;
+    transition: background .25s var(--ease), border-color .25s var(--ease);
+}
+.nav__mail:hover { background: var(--accent); border-color: var(--accent); color: #06282a; }
+
+@media (min-width: 1024px) {
+    :root { --bar-h: 74px; --pad: 40px; }
+
+    /* ---- 히어로 ---- */
+    .home { padding-bottom: 120px; }
+    .home__label { font-size: 12px; margin-bottom: 20px; }
+    .home__inner { max-width: 1000px; margin-inline: auto; }
+    .home__type { font-size: clamp(44px, 4.6vw, 64px); min-height: 1.4em; }
+    .home__kao { font-size: 18px; margin-top: 12px; }
+    .home__rule { width: 60px; margin: 30px auto; }
+    .home__intro { font-size: 17px; }
+    .home__intro b { font-size: 24px; }
+    .home__nav {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px; max-width: 720px; margin: 44px auto 0;
+    }
+    .home__nav a { padding: 15px 8px; font-size: 15px; }
+    .home__nav a:hover { background: rgba(240, 245, 249, .14); border-color: var(--accent); }
+
+    /* ---- 섹션 ---- */
+    .sec { padding: 130px 0 140px; }
+    .wrap { max-width: 1200px; }
+    .sec__title { font-size: clamp(48px, 4vw, 62px); margin-bottom: 10px; }
+    .sec__desc { font-size: 15px; margin-bottom: 44px; }
+    .sec__title + .cards, .sec__title + .skills { margin-top: 52px; }
+
+    /* ---- About: 3단 ---- */
+    .cards { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .card { padding: 40px 32px 36px; }
+    .card:first-child { grid-column: auto; }   /* 태블릿용 전체폭 규칙 해제 */
+    .card__ico { width: 60px; height: 60px; margin-bottom: 24px; }
+    .card__ico img { width: 30px; }
+    .card h3 { font-size: 19px; margin-bottom: 14px; }
+    .card p { font-size: 15px; }
+    .card { transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 16px 38px rgba(30, 32, 34, .14); }
+    .mail:hover { color: var(--accent); }
+
+    /* ---- Skills: 4단 ---- */
+    .skills { gap: 20px; }
+    .skills li {
+        padding: 44px 16px;
+        transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+    }
+    .skills li:hover {
+        background: rgba(240, 245, 249, .1);
+        border-color: rgba(0, 173, 181, .5);
+        transform: translateY(-6px);
+    }
+    .skills__ico { width: 60px; height: 60px; margin-bottom: 18px; }
+    .skills__ico img { width: 52px; }
+    .skills li span { font-size: 15px; }
+
+    /* ---- 포트폴리오 슬라이더: 2장씩 ---- */
+    .slider { margin-top: 40px; }
+    .slider__track { gap: 26px; }
+    .slide {
+        flex-basis: 46%;
+        transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .slide:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(30, 32, 34, .16); }
+    .slide__thumb { aspect-ratio: 16 / 10; }
+    .slide__body { padding: 26px 28px 32px; }
+    .slide__body h3 { font-size: 23px; box-shadow: inset 0 -12px 0 var(--marker); }
+    .slide__body em { font-size: 15px; margin: 14px 0 22px; }
+    .btn { min-height: 48px; padding: 0 24px; font-size: 15px; }
+    .btn:hover { background: var(--accent); color: #fff; }
+    .slider__ctrl { margin-top: 34px; gap: 18px; }
+    .slider__ctrl button { width: 52px; height: 52px; font-size: 28px; }
+    .slider__ctrl button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    /* ---- 푸터 / 맨 위로 ---- */
+    .foot { padding: 70px var(--pad) 64px; }
+    .foot__name { font-size: 22px; }
+    .totop { width: 54px; height: 54px; right: 40px; bottom: 40px; font-size: 22px; }
+    .totop:hover { background: var(--accent); color: #06282a; }
+}
+
+@media (min-width: 1440px) {
+    .wrap { max-width: 1320px; }
+    .slide { flex-basis: 40%; }
+    .sec { padding: 150px 0 160px; }
+}
+
+/* 데스크톱 창을 좁혔을 때 내비게이션이 깨지지 않도록 */
+@media (max-width: 1023px) {
+    .nav { overflow-x: auto; scrollbar-width: none; }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a { padding: 10px; font-size: 13px; white-space: nowrap; }
+    .nav__mail { display: none; }
+}
+
+/* 버전 전환 링크 — 기본형은 base.css에 있고 여기서는 hover만 얹는다 */
+.foot__switch a { transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease); }
+.foot__switch a:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+
