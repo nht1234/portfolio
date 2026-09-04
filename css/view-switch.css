@@ -1,0 +1,25 @@
+/* PC판 하단의 "모바일 버전 보기" 링크 — 기존 스타일과 충돌하지 않도록 독립 파일로 분리 */
+.view-switch {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+.view-switch a {
+    display: inline-block;
+    padding: 9px 16px;
+    border: 1px solid #52616b;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .92);
+    color: #1e2022;
+    line-height: 1;
+    transition: background .25s, color .25s, border-color .25s;
+}
+.view-switch a:hover,
+.view-switch a:focus {
+    background: #1e2022;
+    border-color: #1e2022;
+    color: #f0f5f9;
+}

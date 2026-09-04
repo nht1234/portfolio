@@ -70,7 +70,30 @@ Chromium(Playwright)에서 374×950 / 884×1104 / 360×780 및 가로 모드로 
 - 접힘 ↔ 펼침 전환 시 슬라이더 위치 보정 정상
 - JS 런타임 오류 없음
 
+## 기기별 자동 전환
+
+GitHub Pages는 정적 호스팅이라 서버에서 User-Agent 분기를 할 수 없습니다.
+그래서 두 페이지가 같은 스크립트(`../js/view-switch.js`)를 `<head>` 최상단에서
+동기 실행하고, 자기 자리가 아니면 상대편으로 즉시 넘깁니다.
+
+| 접속 기기 | 주소 | 결과 |
+|---|---|---|
+| PC | `/portfolio/` | PC 버전 그대로 |
+| 모바일 | `/portfolio/` | `/portfolio/new_portfolio/` 로 전환 |
+| PC | `/portfolio/new_portfolio/` | `/portfolio/` 로 전환 |
+| 모바일 | `/portfolio/new_portfolio/` | 모바일 버전 그대로 |
+
+판정 기준은 `max-width: 900px` **또는** `pointer: coarse` 입니다.
+폴드를 펼친 상태(884px)도 모바일로 잡힙니다.
+
+- 무한 리다이렉트 방지: 판정 함수가 양쪽 페이지에서 완전히 동일하므로
+  이동 후에는 반드시 `want === here` 가 되어 한 번만 이동합니다.
+- 수동 전환: `?view=pc` / `?view=mobile` 로 강제 지정할 수 있고,
+  선택은 `sessionStorage`에 기억됩니다(시크릿 모드 대비로 쿼리에도 함께 실림).
+- 각 버전 하단에 상대 버전으로 가는 링크가 있습니다.
+
 ## 원본 유지
 
-루트의 `index.html`, `css/`, `js/`는 **수정하지 않았습니다.**
-데스크톱 버전과 모바일 버전이 각각 독립적으로 동작합니다.
+루트의 PC 버전은 **디자인/레이아웃을 전혀 건드리지 않았습니다.**
+자동 전환을 위해 `index.html`에 7줄(스크립트·스타일시트 링크·전환 링크)만 추가했고,
+`css/style.css`, `css/media.css`, `js/custom.js` 등 기존 파일은 그대로입니다.

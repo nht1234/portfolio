@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-view="mobile">
 <head>
     <meta charset="UTF-8">
+    <!-- 기기에 맞는 버전으로 자동 전환 (렌더링 전에 실행) -->
+    <script src="../js/view-switch.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="웹 퍼블리셔 노현태의 모바일 포트폴리오">
     <meta name="keywords" content="자기소개, 포트폴리오, 웹퍼블리셔, 모바일 포트폴리오">
@@ -217,6 +219,7 @@
     <footer class="foot">
         <p class="foot__name">노현태 <span>Web Publisher</span></p>
         <a class="foot__mail" href="mailto:note1234@gmail.com">note1234@gmail.com</a>
+        <p class="foot__switch"><a href="../?view=pc">PC 버전 보기</a></p>
         <p class="foot__copy">&copy; 2026 No hyeon tae. All rights reserved.</p>
     </footer>
 

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-view="pc">
 <head>
     <meta charset="UTF-8">
+    <!-- 기기에 맞는 버전으로 자동 전환 (렌더링 전에 실행) -->
+    <script src="js/view-switch.js"></script>
     <meta name="description" content="나만의 포트폴리오">
     <meta name="keywords" content="자기소개, 포트폴리오, 자기소개서, 나만의 장단점">
     <meta name="author" content="No hyeon tae">
@@ -21,6 +23,7 @@
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/media.css" type="text/css">
+    <link rel="stylesheet" href="css/view-switch.css" type="text/css">
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!-- 웹 표준을 지원하기 위한 주석 -->
 </head>
@@ -252,5 +255,8 @@
     </section>
 
     
+    <div class="view-switch">
+        <a href="new_portfolio/?view=mobile">모바일 버전 보기</a>
+    </div>
 </body>
 </html>

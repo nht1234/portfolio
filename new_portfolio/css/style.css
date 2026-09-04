@@ -435,3 +435,12 @@ body.is-locked { overflow: hidden; }
     margin-top: 6px;
     font-size: 15px; letter-spacing: .08em; color: var(--accent);
 }
+
+/* PC 버전으로 되돌아가는 링크 */
+.foot__switch a {
+    display: inline-flex; align-items: center;
+    min-height: 44px; padding: 0 18px;
+    border: 1px solid var(--gray); border-radius: 999px;
+    font-size: 13px; color: var(--line);
+}
+.foot__switch { margin-bottom: 14px; }
